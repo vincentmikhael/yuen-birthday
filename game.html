@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 1.4em;
+}
+
+body {
+  counter-reset: game;
+  text-align: center;
+  background: #e9b58b;
+  font-family: "Bungee", cursive !important;
+  color: #333;
+}
+
+input:checked {
+  counter-increment: game;
+}
+
+.total-count::after {
+  content: counter(game);
+}
+
+h2 {
+  font-size: 1em;
+  margin: -0.5em auto 3em;
+  font-weight: 400;
+}
+
+.total-count {
+  font-size: 1.75em;
+  position: absolute;
+  top: 1.75em;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  z-index: 300;
+}
+
+.game-area {
+  display: flex;
+  flex-flow: wrap;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 600px;
+  min-height: 550px;
+  max-height: 700px;
+  margin: 0 auto;
+  padding-left: 0;
+}
+
+li {
+  width: calc(33% - .5em);
+  margin-bottom: 1em;
+  height: 10em;
+  list-style: none;
+  position: relative;
+  border-radius: 10px;
+  background: #64ddf3;
+}
+li:nth-child(1) input {
+  filter: hue-rotate(203.4793619473deg) brightness(1.6665436032);
+  -webkit-animation-duration: 1.1466048982s;
+          animation-duration: 1.1466048982s;
+}
+li:nth-child(2) input {
+  filter: hue-rotate(211.7210580261deg) brightness(1.4643958431);
+  -webkit-animation-duration: 1.54598483s;
+          animation-duration: 1.54598483s;
+}
+li:nth-child(3) input {
+  filter: hue-rotate(339.2715072205deg) brightness(1.3393392345);
+  -webkit-animation-duration: 2.321121654s;
+          animation-duration: 2.321121654s;
+}
+li:nth-child(4) input {
+  filter: hue-rotate(228.6258108154deg) brightness(1.6455116276);
+  -webkit-animation-duration: 0.1395182326s;
+          animation-duration: 0.1395182326s;
+}
+li:nth-child(5) input {
+  filter: hue-rotate(146.2050369141deg) brightness(1.1991583764);
+  -webkit-animation-duration: 4.2539044018s;
+          animation-duration: 4.2539044018s;
+}
+li:nth-child(6) input {
+  filter: hue-rotate(33.5489194943deg) brightness(1.0777877296);
+  -webkit-animation-duration: 3.7773679354s;
+          animation-duration: 3.7773679354s;
+}
+li:nth-child(7) input {
+  filter: hue-rotate(328.2054552829deg) brightness(1.149523942);
+  -webkit-animation-duration: 2.2555146241s;
+          animation-duration: 2.2555146241s;
+}
+li:nth-child(8) input {
+  filter: hue-rotate(338.4267758613deg) brightness(1.7741306657);
+  -webkit-animation-duration: 2.6456821964s;
+          animation-duration: 2.6456821964s;
+}
+li:nth-child(9) input {
+  filter: hue-rotate(329.7136358631deg) brightness(1.1902378899);
+  -webkit-animation-duration: 4.0527306324s;
+          animation-duration: 4.0527306324s;
+}
+
+input[type=checkbox] {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  cursor: crosshair;
+  background: radial-gradient(red 10%, white 10%, white 30%, red 30%, red 50%, white 50%, white 80%, red 80%, red 100%);
+  border-radius: 50%;
+  display: block;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: 0 auto;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 6px solid red;
+  -webkit-animation: hide-target infinite alternate ease-in-out;
+          animation: hide-target infinite alternate ease-in-out;
+  z-index: 1;
+}
+input[type=checkbox]:before {
+  content: "";
+  display: block;
+  background-color: black;
+  height: 50%;
+  width: 6px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 6px);
+  margin: 0 auto;
+  z-index: -1;
+}
+input[type=checkbox]:focus {
+  outline: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+input[type=checkbox]:checked {
+  pointer-events: none;
+  filter: grayscale(1) opacity(0.75);
+  -webkit-animation: none;
+          animation: none;
+}
+input[type=checkbox]:checked:after {
+  content: "+1!";
+  padding: 0.5em;
+  margin: 1em 0 0 1.5em;
+  font-size: 2.5em;
+  font-weight: 600;
+}
+
+.shield {
+  background: #724c20;
+  width: 100%;
+  height: 60%;
+  margin: 0 auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  pointer-events: all;
+  z-index: 100;
+}
+
+@-webkit-keyframes hide-target {
+  0% {
+    top: 0;
+  }
+  25% {
+    top: 50%;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+@keyframes hide-target {
+  0% {
+    top: 0;
+  }
+  25% {
+    top: 50%;
+  }
+  100% {
+    top: 0;
+  }
+}
+.game-over {
+  height: 100%;
+  width: 100%;
+  display: block;
+  background: white;
+  pointer-events: all;
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 200;
+  -webkit-animation: appear 0.25s forwards;
+          animation: appear 0.25s forwards;
+  -webkit-animation-delay: 8s;
+          animation-delay: 8s;
+  background: repeating-linear-gradient(-45deg, #c9ff00 0, #c9ff00 5em, #20c0ff 5em, #20c0ff 10em);
+}
+.game-over h1 {
+  padding: 1em 0 3.5em;
+  background: white;
+}
+
+@-webkit-keyframes appear {
+  from {
+    top: -100vh;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes appear {
+  from {
+    top: -100vh;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+.play-again {
+  background: white;
+  color: #20c0ff;
+  padding: 0.5em 1em;
+  font-size: 2.5em;
+  font-weight: 700;
+}
+
+small a {
+  margin-bottom: 2em;
+  display: block;
+  color: #222;
+}
+.gameover{
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    padding-top: 20px;
+    z-index: 9999;
+    font-size: 30px;
+}
+.d-none{
+    display: none;
+}
+.d-block{
+    display: block;
+}
+</style>
+<body>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <img style="width: 80px; height: 80px;" src="https://s3.getstickerpack.com/storage/uploads/sticker-pack/boobib-cute-couple-2/sticker_26.png?1d1731618ad65b211d429e24a63768b0&d=200x200" alt="">
+<h6>Baby punya 10 detik buat main game nya.. <br> kalo score nya lebih dari 5 nanti dapet hadiah!!</h6>
+    </div>
+
+
+<ul class="game-area" style="margin-top: 50px;">
+  <li><input type="checkbox"><div class="shield"></div></li>
+  <li><input type="checkbox"><div class="shield"></div></li>
+  <li><input type="checkbox"><div class="shield"></div></li>
+  <li><input type="checkbox"><div class="shield"></div></li>
+  <li><input type="checkbox"><div class="shield"></div></li>
+  <li><input type="checkbox"><div class="shield"></div></li>
+  <li><input type="checkbox"><div class="shield"></div></li>
+  <li><input type="checkbox"><div class="shield"></div></li>
+  <li><input type="checkbox"><div class="shield"></div></li>
+</ul>
+
+<h5 class="total-count">Targets Hit: &nbsp;</h5>
+<div class="gameover d-none">
+    Waktu sudah habiss!!! <br>
+    <img style="width: 120px; height: 120px; margin-top: 20px;" src="https://s3.getstickerpack.com/storage/uploads/sticker-pack/boobib-cute-couple-2/sticker_26.png?1d1731618ad65b211d429e24a63768b0&d=200x200" alt="">
+    <div class="deskrip"></div>
+</div>
+<script>
+    let score = 0
+    document.querySelectorAll('input').forEach(e=>{
+        e.addEventListener('click',function(){
+            score += 1
+        })
+    })
+    function countdown(seconds) {
+  var timer = setInterval(function() {
+    seconds--;
+    
+    console.log(seconds);
+
+    if (seconds <= 0) {
+      clearInterval(timer);
+      document.querySelector('.gameover').classList.remove('d-none')
+      if(score < 5){
+        document.querySelector('.deskrip').innerHTML = `
+        <p>Yahhh.... ayoo harus bisa pokok nya</p>
+        <a href="/game.html">Main Lagi</a>
+        `
+      }else{
+        document.querySelector('.deskrip').innerHTML = `
+        <p>Yeayyyy.... Berhasil!!! Baby layak mendapatkan hadiah</p>
+        <a href="/timeline.html">Mauu Hadiah</a>`
+      }
+    }
+  }, 1000);
+}
+
+countdown(10)
+// Memulai countdown d
+</script>
+</body>
+</html>

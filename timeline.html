@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="timeline.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css">
+</head>
+<body>
+    <section class="page-section" id="about">
+        <div class="container">
+            <div class="text-center">
+                <div class="d-flex align-items-center justify-content-center">
+                    <img style="width: 100px;" src="https://s3.getstickerpack.com/storage/uploads/sticker-pack/boobib-cute-couple-2/sticker_27.png?1d1731618ad65b211d429e24a63768b0&d=200x200" class="d-inline-block" alt="">
+                <h2 class="section-heading mb-0 pb-0 text-uppercase">Pilih Hadiah</h2>
+                </div>
+                
+                <h3 class="section-subheading text-muted">Baby pilih aja mau apa nihh</h3>
+            </div>
+            <ul class="timeline">
+                <li>
+                    <div class="timeline-image"><img style="width: 200px; height: 157px; object-fit: cover;" class="rounded-circle img-fluid" src="nonton.jpg" alt="..."></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4 class="subheading">Mau Nonton ?</h4>
+                            <p class="text-muted">Nanti kita cari - cari film yang bagus</p>
+                            <button onclick="popup('nonton')" class="button">Mau nonton</button>
+                        </div>
+                    </div>
+                </li>
+   
+                <li class="timeline-inverted">
+                    <div class="timeline-image"><img style="width: 200px; height: 157px; object-fit: cover;" class="rounded-circle img-fluid" src="nomnom.jpg" alt="..."></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4 class="subheading">Mau Nomnom ?</h4>
+                            <p class="text-muted">Nanti kita cari maem yang enak enak</p>
+                            <button onclick="popup('nomnom')" class="button">Mau nomnom</button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="timeline-image"><img style="width: 200px; height: 157px; object-fit: cover;" class="rounded-circle img-fluid" src="jalan2.jpg" alt="..."></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4 class="subheading">Mau Jalan Jalan ?</h4>
+                            <p class="text-muted">Nanti kita cari tempat buat jalan jalan yang bagus</p>
+                            <button onclick="popup('jalan')" class="button">Mau jalan jalan</button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
+    <script>
+        const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn btn-success',
+    cancelButton: 'btn btn-danger'
+  },
+  buttonsStyling: false
+})
+        function popup(e){
+            if(e == 'nomnom'){
+                swalWithBootstrapButtons.fire({
+                    imageUrl: 'https://s3.getstickerpack.com/storage/uploads/sticker-pack/boobib-cute-couple-2/sticker_13.png?1d1731618ad65b211d429e24a63768b0&d=200x200',
+                    imageWidth: '100',
+                    imageHeight: '100',
+                    text: 'Kita nomnom sampee kenyanggg',
+                    title: 'Yeayy!!',
+                }).then(()=>{
+                    window.location.href = '/end.html'
+                })
+            }else  if(e == 'nonton'){
+                swalWithBootstrapButtons.fire({
+                    imageUrl: 'https://s3.getstickerpack.com/storage/uploads/sticker-pack/boobib-cute-couple-2/sticker_13.png?1d1731618ad65b211d429e24a63768b0&d=200x200',
+                    imageWidth: '100',
+                    imageHeight: '100',
+                    text: 'Kita nanti cari film yang seruu di bioskop!!!',
+                    title: 'Yeayy!!',
+                }
+                ).then(()=>{
+                    window.location.href = '/end.html'
+                })
+            }else{
+                swalWithBootstrapButtons.fire({
+                    imageUrl: 'https://s3.getstickerpack.com/storage/uploads/sticker-pack/boobib-cute-couple-2/sticker_13.png?1d1731618ad65b211d429e24a63768b0&d=200x200',
+                    imageWidth: '100',
+                    imageHeight: '100',
+                    title: 'Yeayy!!',
+                    text: 'Huuu gasabar jalan jalan sama baby!!!'
+                }
+                ).then(()=>{
+                    window.location.href = '/end.html'
+                })
+            }
+            
+        }
+    </script>
+</body>
+</html>
